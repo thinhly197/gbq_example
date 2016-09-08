@@ -1,0 +1,51 @@
+# URL for services
+unsubscribeServer = https://unsubscribe.wemall.com/unsubscribe/
+# https://unsubscribe.wemall.com/resubscribe/
+
+# Staging Slave
+# itmProductServer = http://pcms-report.itruemart-dev.com/api/45311375168544/products/
+
+# Production Slave
+ itmProductServer = http://pcms-report.itruemart.com/api/45311375168544/products/
+
+# Log folder of application
+logFolder = edm-html-generator/logs/
+
+# Freemaker template
+templateFolder = edm-html-generator/templates/
+emailTemplateFileName = email-template.ftl
+
+# UTM Tag
+utmSource = Extmail
+utmMedium = RecommendationEmail
+utmCampaign = nameOfTest
+
+# SQL queries
+sqlFolder = edm-html-generator/sql/
+hashFromEmail = get_hashid_from_email.sql
+allEmailProducts = get_product_from_email_list.sql
+
+# Utilities
+numberOfProducts = 9
+productsPerRow = 3
+delaytimeForITM = 10
+
+# Email sender
+#emailSender = newsletter@ascendcorp.com
+emailSender = ascenddatadeveloper@ascendcorp.com
+emailSubject = Special for you! สินค้าพิเศษสำหรับคุณเท่านั้น คลิกเลย!
+smtpUsername = AKIAJVNBMQA2QAKL5BHA
+smtpPassword = AiSKNp0vuOn9YyN6XXucpi60+ix5anCE9WjNNsjxcYr3
+emailHost = email-smtp.us-east-1.amazonaws.com
+emailPort = 25
+
+# Test
+#false
+isTest = true
+#emailReceivers = thinh.ly@ascendcorp.com; luong.diep@ascendcorp.com; Rithirong.tha@ascendcorp.com; jussi.jou@ascendcorp.com
+#emailReceivers = diepddkv@yahoo.com; ascenddatadeveloper@gmail.com
+emailReceivers = thinh.ly@ascendcorp.com
+#emailReceivers = thinh.ly@ascendcorp.com; Rithirong.tha@ascendcorp.com; jussi.jou@ascendcorp.com
+
+# Multithreaded
+numberOfThread = 3

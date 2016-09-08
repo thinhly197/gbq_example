@@ -1,0 +1,57 @@
+Environment:
+1. Need IntelliJ IDEA
+2. Install Lombok Plugin
+    - Preference -> Plugin
+    - Preference -> Build, Execution, Deployment -> Compiler -> Annotation Processor -> Enable annotation processing
+3. Install gradle
+    - $ brew install gradle
+
+Build:
+    - Build the dependent jar file
+        $ gradle fatJar
+    - Copy the jar file to MKT Prod server
+        $ scp -P 13106 build/libs/edm-html-generator-1.0.jar mktadmin@52.77.96.18:/home/mktadmin/edm-html-generator/edm-html-generator-1.2.jar
+    - In case you update the email subject with Thai language.
+        Need to convert it to ASCII
+        $ native2ascii src/main/resources/config.properties src/main/resources/config.properties
+    - Copy the resource files to MKT Prod server
+        $ scp -P 13106 -pr src/main/resources mktadmin@52.77.96.18:/home/mktadmin/edm-html-generator/resources/
+    - Copy the deploy script to MKT Prod server
+        $ scp -P 13106 deploy_prod.sh mktadmin@52.77.96.18:/home/mktadmin/edm-html-generator/
+
+Deploy:
+1. Do it if you have changed the HTML template file
+    # To make the gmail or yahoo mail don't clipping the email:
+    # Zip the HTML template with http://www.willpeavy.com/minifier/
+2. MKT Prod server. Remote via SSH2
+    IP: 52.77.96.18 port 13106
+    User: mktadmin
+    Password: nEBtt9Cy
+3. Deployment folder: /home/mktadmin/edm-html-generator
+4. Current version: 1.2
+    - Sending email via AWS SES API, control sending limit rate
+    - Email report for failure emails
+    - Product caching
+    - Remove all inactive and out-of-stock products
+
+Running:
+(A) If the server has been configured
+    1. Update config.properties
+        Make sure that you're doing the right thing. (Read the comments in this config file)
+    2. Update /home/mktadmin/edm-html-generator/sql/get_product_from_email_list.sql
+        - Remove the "LIMIT" if you're sending the real one
+        - Update the value for limit if you're testing only.
+          It must be the multiple of numberOfLoadingProductPerEmail
+    3. Execute the command
+        $ java -jar edm-html-generator-1.2.jar
+(B) If the server is the branch new
+    1. Execute the script
+        $ deploy_prod.sh
+    2. Update config.properties
+       Make sure that you're doing the right thing. (Read the comments in this config file)
+    3. Update /home/mktadmin/edm-html-generator/sql/get_product_from_email_list.sql
+       - Remove the "LIMIT" if you're sending the real one
+       - Update the value for limit if you're testing only.
+         It must be the multiple of numberOfLoadingProductPerEmail
+    4. Execute the command
+       $ java -jar edm-html-generator-1.2.jar

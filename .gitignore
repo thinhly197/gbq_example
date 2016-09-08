@@ -1,0 +1,26 @@
+/build
+/gradlew.bat
+/gradlew
+/email_recommendation.html
+/edm-html-generator.iws
+/edm-html-generator.ipr
+/edm-html-generator.iml
+/bin
+/.project
+/.classpath
+
+# Created by .ignore support plugin (hsz.mobi)
+/.gradle/2.10
+/.gradle
+/.gradle/2.5
+/build/reports
+/build/resources
+/build/dependency-cache
+/build/test-results
+/gradle
+/.idea
+/.settings
+/build/jacoco
+/build/classes
+/build/tmp
+/logs
